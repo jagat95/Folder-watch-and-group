@@ -24,7 +24,9 @@ Example:
 
 ## Automate
 > Note: we use pythonw to help start the script in background to avoid command line popups.
+
 > Also click on [Hidden] Windows 10 option in Task scheduler general tab
+
 > Check [Run with Highest Privileges] to avoid some compatibility issues. Although I have tested it with and without, it works both ways. 
 
 ##### To add the script to Windows Task Scheduler, follow these steps:
