@@ -40,6 +40,7 @@ Example:
 4. **Trigger:**
    - Choose the trigger for your task. You can set it to run daily, weekly, or on a specific event.
    - Click "Next."
+   - (I recommend selecting when Windows start, and keep program running in background)
 
 5. **Action:**
    - Choose "Start a program" as the action.
