@@ -1,6 +1,7 @@
 import os
 import re
 import sys
+import time 
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
@@ -76,7 +77,7 @@ def watch_folder(folder_path):
 
     try:
         while True:
-            pass  # Do nothing; let the event handler handle file creation events
+            time.sleep(1)  # Do nothing; let the event handler handle file creation events
     except KeyboardInterrupt:
         observer.stop()
 
