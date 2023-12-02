@@ -38,7 +38,8 @@ Example:
 
 6. **Program/Script:**
    - Browse and select the Python executable. It might be located in a path like `C:\Python39\python.exe`. Make sure to adjust this path based on your Python installation.
-   - In the "Add arguments (optional)" field, enter the full path to your script, for example, `C:\path\to\your\script.py`.
+   -  In the "Add arguments (optional)" field, enter the full path to your script, for example, `C:\path\to\your\script.py`.
+   -  **Add the folder paths** as command-line arguments, for example, `C:\path\to\folder_to_watch C:\path\to\folder_to_write`.
    - Click "Next."
 
 7. **Summary:**
@@ -52,10 +53,10 @@ Example:
 
 Now, your script will run according to the schedule you've set. You may be prompted to enter your Windows user account password during the process.
 
-Make sure that Python is in your system's PATH or provide the full path to the Python executable in the "Program/Script" field.
+> Make sure that Python is in your system's PATH or provide the full path to the Python executable in the "Program/Script" field.
 
-Please note that the Python environment used by the Task Scheduler should have all the necessary dependencies installed (e.g., `watchdog` module). You might need to adjust the Python script and the scheduled task settings accordingly.
+> Please note that the Python environment used by the Task Scheduler should have all the necessary dependencies installed (e.g., `watchdog` module). You might need to adjust the Python script and the scheduled task settings accordingly.
 
-Make sure that Python is in your system's PATH or provide the full path to the Python executable in the "Program/Script" field.
+> Make sure that Python is in your system's PATH or provide the full path to the Python executable in the "Program/Script" field.
 
-Please note that the Python environment used by the Task Scheduler should have all the necessary dependencies installed (e.g., watchdog module). You might need to adjust the Python script and the scheduled task settings accordingly.
+> Please note that the Python environment used by the Task Scheduler should have all the necessary dependencies installed (e.g., watchdog module). You might need to adjust the Python script and the scheduled task settings accordingly.
