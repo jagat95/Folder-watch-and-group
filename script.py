@@ -1,7 +1,6 @@
 import os
 import re
 import sys
-import time
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
@@ -11,9 +10,15 @@ class FileHandler(FileSystemEventHandler):
             return
 
         file_path = event.src_path
-        organize_file(file_path)
+        organize_file(file_path, folder_to_write)
 
-def organize_file(file_path):
+def organize_existing_files(folder_to_watch, folder_to_write):
+    for root, _, files in os.walk(folder_to_watch):
+        for file in files:
+            file_path = os.path.join(root, file)
+            organize_file(file_path, folder_to_write)
+
+def organize_file(file_path, folder_to_write):
     filename = os.path.basename(file_path)
     
     # Extracting date/time and file name
@@ -29,7 +34,8 @@ def organize_file(file_path):
         
         # Check for duplicate files in the destination folder
         if os.path.exists(new_file_path):
-            new_filename = find_available_name(folder_path, file_name)
+            fileext = os.path.splitext(filename);
+            new_filename = find_available_name(folder_path, fileext[0], fileext[1])
             new_file_path = os.path.join(folder_path, new_filename)
             os.rename(file_path, new_file_path)
             print(f"Moved {filename} to {new_filename} folder")
@@ -39,11 +45,11 @@ def organize_file(file_path):
     else:
         print(f"No match found for: {filename}")
 
-def find_available_name(folder_path, base_name):
+def find_available_name(folder_path, base_name, extension):
     # Append a numerical suffix to the base name until an available name is found
     suffix = 2
     while True:
-        new_name = f"{base_name} ({suffix})"
+        new_name = f"{base_name} ({suffix}){extension}"
         new_path = os.path.join(folder_path, new_name)
         if not os.path.exists(new_path):
             return new_name
@@ -70,7 +76,7 @@ def watch_folder(folder_path):
 
     try:
         while True:
-            time.sleep(1)
+            pass  # Do nothing; let the event handler handle file creation events
     except KeyboardInterrupt:
         observer.stop()
 
@@ -92,4 +98,5 @@ if __name__ == "__main__":
         print(f"Error: {folder_to_write} is not a valid directory.")
         sys.exit(1)
 
+    organize_existing_files(folder_to_watch, folder_to_write)
     watch_folder(folder_to_watch)
