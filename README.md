@@ -23,6 +23,9 @@ Example:
 
 
 ## Automate
+> Note: we use pythonw to help start the script in background to avoid command line popups.
+> Also click on [Hidden] Windows 10 option in Task scheduler general tab
+> Check [Run with Highest Privileges] to avoid some compatibility issues. Although I have tested it with and without, it works both ways. 
 
 ##### To add the script to Windows Task Scheduler, follow these steps:
 1. **Open Task Scheduler:**
@@ -47,7 +50,7 @@ Example:
    - Click "Next."
 
 6. **Program/Script:**
-   - Browse and select the Python executable. It might be located in a path like `C:\Python39\python.exe`. Make sure to adjust this path based on your Python installation.
+   - Browse and select the Python executable. It might be located in a path like `C:\Python39\pythonw.exe`. Make sure to adjust this path based on your Python installation.
    -  In the "Add arguments (optional)" field, enter the full path to your script, for example, `C:\path\to\your\script.py`.
    -  **Add the folder paths** as command-line arguments, for example, `C:\path\to\folder_to_watch C:\path\to\folder_to_write`.
    - Click "Next."
