@@ -26,10 +26,28 @@ def organize_file(file_path):
             os.makedirs(folder_path)
 
         new_file_path = os.path.join(folder_path, filename)
-        os.rename(file_path, new_file_path)
-        print(f"Moved {filename} to {file_name} folder")
+        
+        # Check for duplicate files in the destination folder
+        if os.path.exists(new_file_path):
+            new_filename = find_available_name(folder_path, file_name)
+            new_file_path = os.path.join(folder_path, new_filename)
+            os.rename(file_path, new_file_path)
+            print(f"Moved {filename} to {new_filename} folder")
+        else:
+            os.rename(file_path, new_file_path)
+            print(f"Moved {filename} to {file_name} folder")
     else:
         print(f"No match found for: {filename}")
+
+def find_available_name(folder_path, base_name):
+    # Append a numerical suffix to the base name until an available name is found
+    suffix = 2
+    while True:
+        new_name = f"{base_name} ({suffix})"
+        new_path = os.path.join(folder_path, new_name)
+        if not os.path.exists(new_path):
+            return new_name
+        suffix += 1
 
 def extract_date_time_and_name(filename):
     # Define a pattern to capture the date/time information
