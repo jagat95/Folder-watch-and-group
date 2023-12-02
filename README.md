@@ -12,6 +12,15 @@ Example:
 - Overwatch 2023-04-17 00-33-48.mp4 -> Overwatch/*
 - [Stray]   3_19_2023 3_36_19 PM -> [Stray]/*
 
+## Dependencies
+- Win 10,
+- Python 3.11.2 (tested),
+- Watchdog via pip
+  - **Verify pip**: py -m pip --version 
+  > pip 22.3.1 from C:\Users\jagat\AppData\Local\Programs\Python\Python311\Lib\site-packages\pip (python 3.11)
+  - py -m pip install watchdog
+  - Add scripts to windows PATH, if you see warning " WARNING: The script watchmedo.exe is installed in '...Python\Python311\Scripts' which is not on PATH." 
+
 
 ## Automate
 
