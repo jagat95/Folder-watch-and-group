@@ -38,13 +38,23 @@ def organize_file(file_path, folder_to_write):
             fileext = os.path.splitext(filename);
             new_filename = find_available_name(folder_path, fileext[0], fileext[1])
             new_file_path = os.path.join(folder_path, new_filename)
-            os.rename(file_path, new_file_path)
-            print(f"Moved {filename} to {new_filename} folder")
-        else:
-            os.rename(file_path, new_file_path)
-            print(f"Moved {filename} to {file_name} folder")
+            
+        move_fileto(file_path, new_file_path)
     else:
         print(f"No match found for: {filename}")
+
+def move_fileto(file_path, new_file_path):
+    retries = 3
+    while(retries > 0):
+        retries -= 1
+        try:
+            os.rename(file_path, new_file_path)
+            print(f"Moved {filename} to {new_filename} folder")
+        except (IOError, OSError) as e:
+            print("error")
+            time.sleep(3)
+        except:
+            pass
 
 def find_available_name(folder_path, base_name, extension):
     # Append a numerical suffix to the base name until an available name is found
